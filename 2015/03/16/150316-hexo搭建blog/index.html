@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo部署github搭建blog简易教程 | SoulDong&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo部署github搭建blog简易教程">
+<meta property="og:url" content="http://souldong1591.github.io/2015/03/16/150316-hexo搭建blog/index.html">
+<meta property="og:site_name" content="SoulDong's blog">
+<meta property="og:description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo部署github搭建blog简易教程">
+<meta name="twitter:description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
+  
+    <link rel="alternative" href="/atom.xml" title="SoulDong&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c49d2975760f8440a5b6943e2d78bdf0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/main/avatar.png">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Soul东</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">码农，程序猿</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/souldong1591" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/souldong1591" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/souldong1591" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Soul东</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/main/avatar.png">
+				<hgroup>
+				  <h1 class="header-author">Soul东</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">码农，程序猿</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/souldong1591" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/souldong1591" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/souldong1591" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-150316-hexo搭建blog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/16/150316-hexo搭建blog/" class="article-date">
+  	<time datetime="2015-03-16T10:57:06.000Z" itemprop="datePublished">2015-03-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo部署github搭建blog简易教程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0_前言">0 前言</h2><p>从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。</p>
+<hr>
+<a id="more"></a>
+<h2 id="1_hexo简介">1 hexo简介</h2><p>hexo是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。其生成的静态网页可以直接放到GitHub Pages，GitCafe Page，BAE等平台上。其搭建过程与jekyll相比还是要简单一些的，而且主题不需要你太折腾就很漂亮了。而搭建完成后，发布文章特别简单，只需要如下几个命令即可完成一般操作：</p>
+<pre><code><span class="title">hexo</span> n <span class="string">"name"</span> <span class="comment">#创建一篇名字为name的文章</span>
+hexo g <span class="comment">#生成静态网页</span>
+hexo d <span class="comment">#部署你的网页</span>
+hexo d -g <span class="comment">#生成并部署</span>
+</code></pre><p>挺爽的吧~<br>github很熟悉了，就不多介绍了。</p>
+<hr>
+<h2 id="2_环境准备">2 环境准备</h2><h3 id="安装node-js">安装node.js</h3><p>首先到<a href="http://nodejs.org/download/" target="_blank" rel="external">node.js官网</a>的下载页面下载 Windows 版本, 这里有两种版本，推荐 .msi 的安装程序，包含了 Node.js 和 NPM 两个程序，比较方便，.exe 版本仅仅包含 node.js 的部分。<br>一路next安装，如果使用 .msi 安装程序的话，不用配置 <code>PATH</code> 路径了，安装的时候已经自动帮你配好了。打开一个命令行窗口，输入<code>node -v</code>，输出版本号信息，说明nodejs安装成功。</p>
+<h3 id="安装git">安装git</h3><p>推荐安装<a href="http://msysgit.github.io/" target="_blank" rel="external"><code>msysgit</code></a>，安装后要进行一些配置，可以自己搜索一下，比较简单，不多说了。</p>
+<blockquote>
+<p>github肯定是要有的，也可以是gitcafe，建立与你用户名对应的仓库，仓库名必须为<code>your_user_name.github.io</code>,添加SSH公钥当然也省不了。可以查看github的<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">帮助</a>。</p>
+</blockquote>
+<hr>
+<h2 id="3_安装及使用hexo">3 安装及使用hexo</h2><h3 id="安装hexo">安装hexo</h3><p>上面环境装好了以后，就可以安装hexo了。<br>执行以下命令安装hexo：<br><code>npm install hexo-cli -g</code></p>
+<h3 id="初始化">初始化</h3><p>执行init命令初始化hexo到你指定的目录：<br><code>hexo init &lt;your folder&gt;</code><br>不过建议直接cd到你要初始化的目录下，执行<code>hexo init</code>进行初始化<br>然后在你init的目录下，执行<code>npm install</code><br>OK，下面开始正式使用hexo搭建自己的blog</p>
+<h3 id="生成静态页面并启动调试">生成静态页面并启动调试</h3><p>在你init的目录下，执行<code>hexo generate</code>生成静态页面<br>然后执行<code>hexo server</code>进行调试<br>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>,最好使用chrome，然后你就会惊喜的发现漂亮的hexo页面了。</p>
+<h3 id="书写文章">书写文章</h3><p>搭建blog就是为了写文章，那么重要的一步来了。<br>执行<code>hexo new [layout] &quot;postName&quot;</code>命令，生成指定名称的文章至hexo\source_posts\postName.md。<br>其中，layout是可选参数，默认值为post，可在scaffolds目录看到这些可选参数。<br>可以添加自己的layout，方法就是添加一个 .md 文件即可，同时也可以编辑现有的layout，比如post的layout默认是hexo\scaffolds\post.md</p>
+<pre><code>title: { { title } } #注意大括号与大括号之间有空格，防止转义
+date: { { date } }
+<span class="header">tags:
+---</span>
+</code></pre><p>例如添加一个categories，以免每次手工输入，只需要在这个文件添加一行，如下：</p>
+<pre><code>title: { { title } }
+date: { { date } }
+categories: 
+<span class="header">tags: 
+---</span>
+</code></pre><p>打开刚才生成的文件hexo\source_posts\postName.md，内容如下：</p>
+<pre><code><span class="label">title:</span> postName <span class="preprocessor">#文章在页面上的显示名称，可以任意修改</span>
+<span class="label">date:</span> <span class="number">2015</span>-<span class="number">03</span>-<span class="number">16</span> <span class="number">18</span>:<span class="number">57</span>:<span class="number">06</span> <span class="preprocessor">#文章生成时间，可任意修改，一般不改</span>
+<span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:空时后面要有个空格</span>
+<span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:空时后面要有个空格</span>
+---
+这里开始使用markdown格式输入你的正文。
+</code></pre><p>在需要显示摘要的地方添加如下代码即可：</p>
+<pre><code>以上是摘要
+<span class="comment">&lt;!--more--&gt;</span>
+以下是余下全文
+</code></pre><p>在主页只显示摘要部分，正文内容点击链接打开全文才显示。<br>书写可用<code>sublime</code>，或者<a href="https://www.zybuluo.com/" target="_blank" rel="external"><code>作业部落</code></a>等工具，看自己习惯。</p>
+<h3 id="主题安装">主题安装</h3><p>默认的主题肯定有人不喜欢，但是不用担心，hexo有很多优质的主题供你选用。<br>可在hexo的主题列表<a href="http://github.com/tommy351/hexo/wiki/Themes" target="_blank" rel="external">Hexo Themes</a>进行浏览选择。有很多不错的主题，例如<a href="https://github.com/A-limon/pacman" target="_blank" rel="external">pacman</a>，<a href="https://github.com/heroicyang/hexo-theme-modernist" target="_blank" rel="external">modernist</a>，<a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external">Vno</a>，<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a>，都是很不错的主题。<br>安装主题很方便，只需要执行(注意要在你init的目录下执行)：<br><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code><br>其中themes后面的目录名字随便写，但是要与下面配置时一致。<br>修改hexo根目录下 <code>_config.yml</code> 里的 <code>theme: yilia</code><br>主题有更新时，可用如下命令获取更新：</p>
+<pre><code><span class="built_in">cd</span> themes/yilia
+git pull
+</code></pre><p>主题配置文件在主目录下的_config.yml：</p>
+<pre><code><span class="preprocessor"># Header</span>
+menu:
+主页: /
+所有文章: /archives
+<span class="preprocessor"># 随笔: /tags/随笔</span>
+
+<span class="preprocessor"># SubNav</span>
+subnav:
+  github: <span class="string">"#"</span>
+  weibo: <span class="string">"#"</span>
+  rss: <span class="string">"#"</span>
+  zhihu: <span class="string">"#"</span>
+  #douban: <span class="string">"#"</span>
+  #mail: <span class="string">"#"</span>
+  #facebook: <span class="string">"#"</span>
+  #google: <span class="string">"#"</span>
+  #twitter: <span class="string">"#"</span>
+  #linkedin: <span class="string">"#"</span>
+
+rss: /atom.xml
+
+<span class="preprocessor"># Content</span>
+excerpt_link: more
+fancybox: <span class="literal">true</span>
+mathjax: <span class="literal">true</span>
+
+<span class="preprocessor"># Miscellaneous</span>
+google_analytics: <span class="string">''</span>
+favicon: /favicon.png
+
+<span class="preprocessor">#你的头像url</span>
+avatar: <span class="string">""</span>
+<span class="preprocessor">#是否开启分享</span>
+share: <span class="literal">true</span>
+<span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span>
+<span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说    评论</span>
+duoshuo: #填写你的short_name
+<span class="preprocessor">#是否开启云标签</span>
+tagcloud: <span class="literal">true</span>
+
+<span class="preprocessor">#是否开启友情链接</span>
+<span class="preprocessor">#不开启——</span>
+<span class="preprocessor">#friends: false</span>
+<span class="preprocessor">#开启——</span>
+friends:
+  奥巴马的博客: http:<span class="comment">//localhost:4000/</span>
+  卡卡的美丽传说: http:<span class="comment">//localhost:4000/</span>
+  本泽马的博客: http:<span class="comment">//localhost:4000/</span>
+  吉格斯的博客: http:<span class="comment">//localhost:4000/</span>
+  习大大大不同: http:<span class="comment">//localhost:4000/</span>
+  托蒂的博客: http:<span class="comment">//localhost:4000/</span>
+
+<span class="preprocessor">#是否开启“关于我”。</span>
+<span class="preprocessor">#不开启——</span>
+<span class="preprocessor">#aboutme: false</span>
+<span class="preprocessor">#开启——</span>
+aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…
+</code></pre><p>因为没用过多说，这里的short_name坑了我好久。</p>
+<ul>
+<li>首先，进入<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>，登陆。</li>
+<li>然后，点击我要安装</li>
+<li><p>然后，就没有然后了，东西都能找到了。。。</p>
+<h3 id="部署到github上">部署到github上</h3><p>修改hexo根目录下 <code>_config.yml</code>，增加如下代码：</p>
+<p> deploy:</p>
+<pre><code><span class="attribute">type</span>: git
+<span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:your_name/your_name.github.io.git
+<span class="attribute">branch</span>: master
+</code></pre><p>然后，执行<code>hexo deploy</code>即可</p>
+</li>
+</ul>
+<blockquote>
+<p><code>hexo deploy</code>命令可能会显示<code>ERROR Deployer not found : github</code> 错误<br>需要先运行下<code>npm install hexo-deployer-git --save</code><br>然后在执行<code>hexo g</code>，在执行<code>hexo d</code></p>
+</blockquote>
+<hr>
+<h2 id="4_常用命令的总结">4 常用命令的总结</h2><pre><code>hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
+hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
+hexo generate <span class="preprocessor">#生成静态页面至public目录</span>
+hexo <span class="keyword">server</span> <span class="preprocessor">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span>
+hexo deploy <span class="preprocessor">#将.deploy目录部署到GitHub</span>
+
+hexo n == hexo <span class="keyword">new</span>
+hexo g == hexo generate
+hexo s == hexo <span class="keyword">server</span>
+hexo d == hexo deploy
+</code></pre><p>整个搭建过程得到了许多blog文章的知道，其中<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">不如</a>的帮助最大，这篇简易的搭建教程就是基于此，感谢~</p>
+
+        
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="150316-hexo搭建blog" data-title="hexo部署github搭建blog简易教程" data-url="http://souldong1591.github.io/2015/03/16/150316-hexo搭建blog/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"souldong1591"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Soul东
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
