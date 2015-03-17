@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hexo部署github搭建blog简易教程 | SoulDong&#39;s blog</title>
+  <title>hexo配合github搭建blog简易教程 | SoulDong&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo部署github搭建blog简易教程">
+<meta property="og:title" content="hexo配合github搭建blog简易教程">
 <meta property="og:url" content="http://souldong1591.github.io/2015/03/16/150316-hexo搭建blog/index.html">
 <meta property="og:site_name" content="SoulDong's blog">
 <meta property="og:description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo部署github搭建blog简易教程">
+<meta name="twitter:title" content="hexo配合github搭建blog简易教程">
 <meta name="twitter:description" content="0 前言从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。">
   
     <link rel="alternative" href="/atom.xml" title="SoulDong&#39;s blog" type="application/atom+xml">
@@ -124,7 +124,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/blog/" style="font-size: NaNpx;">blog</a><a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
+						<a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a>
 					</div>
 				</section>
 				
@@ -213,16 +213,16 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      hexo部署github搭建blog简易教程
+      hexo配合github搭建blog简易教程
     </h1>
   
 
       </header>
       
-      <div class="article-info">
+      <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 	</div>
 
         
@@ -233,122 +233,43 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0_前言">0 前言</h2><p>从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。</p>
-<hr>
-<a id="more"></a>
+        <h2 id="0_前言">0 前言</h2><p>从去年就开始念叨要开始写blog，期间也搞过jekyll搭配github，但是视觉上总觉的不是很好，而且搭建本地环境挺麻烦的，就这样拖沓到前些天。这两天稍微闲了下来，想起来还有hexo没试过，看朋友用这个搭建的挺漂亮的，就动手搭建了出来，搭建过程遇到了好多问题，就总结个教程留到这里。<br><a id="more"></a></p>
 <h2 id="1_hexo简介">1 hexo简介</h2><p>hexo是一个基于Node.js的静态博客程序，其编译上百篇文字只需要几秒。其生成的静态网页可以直接放到GitHub Pages，GitCafe Page，BAE等平台上。其搭建过程与jekyll相比还是要简单一些的，而且主题不需要你太折腾就很漂亮了。而搭建完成后，发布文章特别简单，只需要如下几个命令即可完成一般操作：</p>
 <pre><code><span class="title">hexo</span> n <span class="string">"name"</span> <span class="comment">#创建一篇名字为name的文章</span>
 hexo g <span class="comment">#生成静态网页</span>
 hexo d <span class="comment">#部署你的网页</span>
 hexo d -g <span class="comment">#生成并部署</span>
 </code></pre><p>挺爽的吧~<br>github很熟悉了，就不多介绍了。</p>
-<hr>
 <h2 id="2_环境准备">2 环境准备</h2><h3 id="安装node-js">安装node.js</h3><p>首先到<a href="http://nodejs.org/download/" target="_blank" rel="external">node.js官网</a>的下载页面下载 Windows 版本, 这里有两种版本，推荐 .msi 的安装程序，包含了 Node.js 和 NPM 两个程序，比较方便，.exe 版本仅仅包含 node.js 的部分。<br>一路next安装，如果使用 .msi 安装程序的话，不用配置 <code>PATH</code> 路径了，安装的时候已经自动帮你配好了。打开一个命令行窗口，输入<code>node -v</code>，输出版本号信息，说明nodejs安装成功。</p>
 <h3 id="安装git">安装git</h3><p>推荐安装<a href="http://msysgit.github.io/" target="_blank" rel="external"><code>msysgit</code></a>，安装后要进行一些配置，可以自己搜索一下，比较简单，不多说了。</p>
 <blockquote>
 <p>github肯定是要有的，也可以是gitcafe，建立与你用户名对应的仓库，仓库名必须为<code>your_user_name.github.io</code>,添加SSH公钥当然也省不了。可以查看github的<a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">帮助</a>。</p>
 </blockquote>
-<hr>
 <h2 id="3_安装及使用hexo">3 安装及使用hexo</h2><h3 id="安装hexo">安装hexo</h3><p>上面环境装好了以后，就可以安装hexo了。<br>执行以下命令安装hexo：<br><code>npm install hexo-cli -g</code></p>
 <h3 id="初始化">初始化</h3><p>执行init命令初始化hexo到你指定的目录：<br><code>hexo init &lt;your folder&gt;</code><br>不过建议直接cd到你要初始化的目录下，执行<code>hexo init</code>进行初始化<br>然后在你init的目录下，执行<code>npm install</code><br>OK，下面开始正式使用hexo搭建自己的blog</p>
 <h3 id="生成静态页面并启动调试">生成静态页面并启动调试</h3><p>在你init的目录下，执行<code>hexo generate</code>生成静态页面<br>然后执行<code>hexo server</code>进行调试<br>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>,最好使用chrome，然后你就会惊喜的发现漂亮的hexo页面了。</p>
 <h3 id="书写文章">书写文章</h3><p>搭建blog就是为了写文章，那么重要的一步来了。<br>执行<code>hexo new [layout] &quot;postName&quot;</code>命令，生成指定名称的文章至hexo\source_posts\postName.md。<br>其中，layout是可选参数，默认值为post，可在scaffolds目录看到这些可选参数。<br>可以添加自己的layout，方法就是添加一个 .md 文件即可，同时也可以编辑现有的layout，比如post的layout默认是hexo\scaffolds\post.md</p>
-<pre><code>title: { { title } } #注意大括号与大括号之间有空格，防止转义
-date: { { date } }
-<span class="header">tags:
----</span>
-</code></pre><p>例如添加一个categories，以免每次手工输入，只需要在这个文件添加一行，如下：</p>
-<pre><code>title: { { title } }
-date: { { date } }
-categories: 
-<span class="header">tags: 
----</span>
-</code></pre><p>打开刚才生成的文件hexo\source_posts\postName.md，内容如下：</p>
-<pre><code><span class="label">title:</span> postName <span class="preprocessor">#文章在页面上的显示名称，可以任意修改</span>
-<span class="label">date:</span> <span class="number">2015</span>-<span class="number">03</span>-<span class="number">16</span> <span class="number">18</span>:<span class="number">57</span>:<span class="number">06</span> <span class="preprocessor">#文章生成时间，可任意修改，一般不改</span>
-<span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:空时后面要有个空格</span>
-<span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:空时后面要有个空格</span>
----
-这里开始使用markdown格式输入你的正文。
-</code></pre><p>在需要显示摘要的地方添加如下代码即可：</p>
-<pre><code>以上是摘要
-<span class="comment">&lt;!--more--&gt;</span>
-以下是余下全文
-</code></pre><p>在主页只显示摘要部分，正文内容点击链接打开全文才显示。<br>书写可用<code>sublime</code>，或者<a href="https://www.zybuluo.com/" target="_blank" rel="external"><code>作业部落</code></a>等工具，看自己习惯。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: &#123; &#123; title &#125; &#125; #注意大括号与大括号之间有空格，防止转义</span><br><span class="line">date: &#123; &#123; date &#125; &#125;</span><br><span class="line"><span class="header">tags:</span><br><span class="line">---</span></span><br></pre></td></tr></table></figure>
+<p>例如添加一个categories，以免每次手工输入，只需要在这个文件添加一行，如下：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: &#123; &#123; title &#125; &#125;</span><br><span class="line">date: &#123; &#123; date &#125; &#125;</span><br><span class="line">categories: </span><br><span class="line"><span class="header">tags: </span><br><span class="line">---</span></span><br></pre></td></tr></table></figure>
+<p>打开刚才生成的文件hexo\source_posts\postName.md，内容如下：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">title:</span> postName <span class="preprocessor">#文章在页面上的显示名称，可以任意修改</span></span><br><span class="line"><span class="label">date:</span> <span class="number">2015</span>-<span class="number">03</span>-<span class="number">16</span> <span class="number">18</span>:<span class="number">57</span>:<span class="number">06</span> <span class="preprocessor">#文章生成时间，可任意修改，一般不改</span></span><br><span class="line"><span class="label">categories:</span> <span class="preprocessor">#文章分类目录，可以为空，注意:空时后面要有个空格</span></span><br><span class="line"><span class="label">tags:</span> <span class="preprocessor">#文章标签，可空，多标签请用格式[tag1,tag2,tag3]，注意:空时后面要有个空格</span></span><br><span class="line">---</span><br><span class="line">这里开始使用markdown格式输入你的正文。</span><br></pre></td></tr></table></figure>
+<p>在需要显示摘要的地方添加如下代码即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以上是摘要</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br><span class="line">以下是余下全文</span><br></pre></td></tr></table></figure>
+<p>在主页只显示摘要部分，正文内容点击链接打开全文才显示。<br>书写可用<code>sublime</code>，或者<a href="https://www.zybuluo.com/" target="_blank" rel="external"><code>作业部落</code></a>等工具，看自己习惯。</p>
 <h3 id="主题安装">主题安装</h3><p>默认的主题肯定有人不喜欢，但是不用担心，hexo有很多优质的主题供你选用。<br>可在hexo的主题列表<a href="http://github.com/tommy351/hexo/wiki/Themes" target="_blank" rel="external">Hexo Themes</a>进行浏览选择。有很多不错的主题，例如<a href="https://github.com/A-limon/pacman" target="_blank" rel="external">pacman</a>，<a href="https://github.com/heroicyang/hexo-theme-modernist" target="_blank" rel="external">modernist</a>，<a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank" rel="external">Vno</a>，<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia</a>，都是很不错的主题。<br>安装主题很方便，只需要执行(注意要在你init的目录下执行)：<br><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code><br>其中themes后面的目录名字随便写，但是要与下面配置时一致。<br>修改hexo根目录下 <code>_config.yml</code> 里的 <code>theme: yilia</code><br>主题有更新时，可用如下命令获取更新：</p>
 <pre><code><span class="built_in">cd</span> themes/yilia
 git pull
 </code></pre><p>主题配置文件在主目录下的_config.yml：</p>
-<pre><code><span class="preprocessor"># Header</span>
-menu:
-主页: /
-所有文章: /archives
-<span class="preprocessor"># 随笔: /tags/随笔</span>
-
-<span class="preprocessor"># SubNav</span>
-subnav:
-  github: <span class="string">"#"</span>
-  weibo: <span class="string">"#"</span>
-  rss: <span class="string">"#"</span>
-  zhihu: <span class="string">"#"</span>
-  #douban: <span class="string">"#"</span>
-  #mail: <span class="string">"#"</span>
-  #facebook: <span class="string">"#"</span>
-  #google: <span class="string">"#"</span>
-  #twitter: <span class="string">"#"</span>
-  #linkedin: <span class="string">"#"</span>
-
-rss: /atom.xml
-
-<span class="preprocessor"># Content</span>
-excerpt_link: more
-fancybox: <span class="literal">true</span>
-mathjax: <span class="literal">true</span>
-
-<span class="preprocessor"># Miscellaneous</span>
-google_analytics: <span class="string">''</span>
-favicon: /favicon.png
-
-<span class="preprocessor">#你的头像url</span>
-avatar: <span class="string">""</span>
-<span class="preprocessor">#是否开启分享</span>
-share: <span class="literal">true</span>
-<span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span>
-<span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说    评论</span>
-duoshuo: #填写你的short_name
-<span class="preprocessor">#是否开启云标签</span>
-tagcloud: <span class="literal">true</span>
-
-<span class="preprocessor">#是否开启友情链接</span>
-<span class="preprocessor">#不开启——</span>
-<span class="preprocessor">#friends: false</span>
-<span class="preprocessor">#开启——</span>
-friends:
-  奥巴马的博客: http:<span class="comment">//localhost:4000/</span>
-  卡卡的美丽传说: http:<span class="comment">//localhost:4000/</span>
-  本泽马的博客: http:<span class="comment">//localhost:4000/</span>
-  吉格斯的博客: http:<span class="comment">//localhost:4000/</span>
-  习大大大不同: http:<span class="comment">//localhost:4000/</span>
-  托蒂的博客: http:<span class="comment">//localhost:4000/</span>
-
-<span class="preprocessor">#是否开启“关于我”。</span>
-<span class="preprocessor">#不开启——</span>
-<span class="preprocessor">#aboutme: false</span>
-<span class="preprocessor">#开启——</span>
-aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…
-</code></pre><p>因为没用过多说，这里的short_name坑了我好久。</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Header</span></span><br><span class="line">menu:</span><br><span class="line">主页: /</span><br><span class="line">所有文章: /archives</span><br><span class="line"><span class="preprocessor"># 随笔: /tags/随笔</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># SubNav</span></span><br><span class="line">subnav:</span><br><span class="line">  github: <span class="string">"#"</span></span><br><span class="line">  weibo: <span class="string">"#"</span></span><br><span class="line">  rss: <span class="string">"#"</span></span><br><span class="line">  zhihu: <span class="string">"#"</span></span><br><span class="line">  #douban: <span class="string">"#"</span></span><br><span class="line">  #mail: <span class="string">"#"</span></span><br><span class="line">  #facebook: <span class="string">"#"</span></span><br><span class="line">  #google: <span class="string">"#"</span></span><br><span class="line">  #twitter: <span class="string">"#"</span></span><br><span class="line">  #linkedin: <span class="string">"#"</span></span><br><span class="line"></span><br><span class="line">rss: /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Content</span></span><br><span class="line">excerpt_link: more</span><br><span class="line">fancybox: <span class="literal">true</span></span><br><span class="line">mathjax: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"># Miscellaneous</span></span><br><span class="line">google_analytics: <span class="string">''</span></span><br><span class="line">favicon: /favicon.png</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#你的头像url</span></span><br><span class="line">avatar: <span class="string">""</span></span><br><span class="line"><span class="preprocessor">#是否开启分享</span></span><br><span class="line">share: <span class="literal">true</span></span><br><span class="line"><span class="preprocessor">#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key</span></span><br><span class="line"><span class="preprocessor">#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说    评论</span></span><br><span class="line">duoshuo: #填写你的short_name</span><br><span class="line"><span class="preprocessor">#是否开启云标签</span></span><br><span class="line">tagcloud: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启友情链接</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#friends: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">friends:</span><br><span class="line">  奥巴马的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  卡卡的美丽传说: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  本泽马的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  吉格斯的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  习大大大不同: http:<span class="comment">//localhost:4000/</span></span><br><span class="line">  托蒂的博客: http:<span class="comment">//localhost:4000/</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#是否开启“关于我”。</span></span><br><span class="line"><span class="preprocessor">#不开启——</span></span><br><span class="line"><span class="preprocessor">#aboutme: false</span></span><br><span class="line"><span class="preprocessor">#开启——</span></span><br><span class="line">aboutme: 我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</span><br></pre></td></tr></table></figure>
+<p>因为没用过多说，这里的short_name坑了我好久。</p>
 <ul>
 <li>首先，进入<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>，登陆。</li>
 <li>然后，点击我要安装</li>
-<li><p>然后，就没有然后了，东西都能找到了。。。</p>
-<h3 id="部署到github上">部署到github上</h3><p>修改hexo根目录下 <code>_config.yml</code>，增加如下代码：</p>
-<p> deploy:</p>
-<pre><code><span class="attribute">type</span>: git
-<span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:your_name/your_name.github.io.git
-<span class="attribute">branch</span>: master
-</code></pre><p>然后，执行<code>hexo deploy</code>即可</p>
-</li>
+<li>然后，就没有然后了，东西都能找到了。。。<h3 id="部署到github上">部署到github上</h3>修改hexo根目录下 <code>_config.yml</code>，增加如下代码：</li>
 </ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">    <span class="attribute">type</span>: git</span><br><span class="line">    <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:your_name/your_name.github.io.git</span><br><span class="line">    <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+<p>然后，执行<code>hexo deploy</code>即可</p>
 <blockquote>
 <p><code>hexo deploy</code>命令可能会显示<code>ERROR Deployer not found : github</code> 错误<br>需要先运行下<code>npm install hexo-deployer-git --save</code><br>然后在执行<code>hexo g</code>，在执行<code>hexo d</code></p>
 </blockquote>
@@ -363,9 +284,8 @@ hexo n == hexo <span class="keyword">new</span>
 hexo g == hexo generate
 hexo s == hexo <span class="keyword">server</span>
 hexo d == hexo deploy
-</code></pre><p>整个搭建过程得到了许多blog文章的知道，其中<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">不如</a>的帮助最大，这篇简易的搭建教程就是基于此，感谢~</p>
+</code></pre><p>整个搭建过程查阅了许多blog文章，例如<a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">不如</a>的，感谢~</p>
 
-        
       
     </div>
     
@@ -395,7 +315,7 @@ hexo d == hexo deploy
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="150316-hexo搭建blog" data-title="hexo部署github搭建blog简易教程" data-url="http://souldong1591.github.io/2015/03/16/150316-hexo搭建blog/"></div>
+	<div class="ds-thread" data-thread-key="150316-hexo搭建blog" data-title="hexo配合github搭建blog简易教程" data-url="http://souldong1591.github.io/2015/03/16/150316-hexo搭建blog/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
