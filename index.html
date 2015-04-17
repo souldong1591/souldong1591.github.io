@@ -124,7 +124,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/环境配置/" style="font-size: NaNpx;">环境配置</a>
+						<a href="/tags/IO/" style="font-size: NaNpx;">IO</a><a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/OpenCV/" style="font-size: NaNpx;">OpenCV</a><a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/环境配置/" style="font-size: NaNpx;">环境配置</a>
 					</div>
 				</section>
 				
@@ -198,6 +198,122 @@ var _hmt = _hmt || [];
 </nav>
       <div class="body-wrap">
   
+    <article id="post-150417-Java读存文件方法的那些事儿" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/17/150417-Java读存文件方法的那些事儿/" class="article-date">
+  	<time datetime="2015-04-17T07:33:05.000Z" itemprop="datePublished">2015-04-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/17/150417-Java读存文件方法的那些事儿/">Java读存文件方法的那些事儿</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><pre><code>这两天帮同学处理数据的时候，频繁用到读写操作，虽然平时也用，但一直没有好好整理一下，刚好用碰到了一个小问题，正好一起梳理一下，行成一个自己用的读写工具。
+先说一下碰到的小问题，很简单，就是文件编码的问题，主要是UTF-8的BOM头问题，由于没有处理BOM头，而BOM头占用三个字节，导致读取的第一行数据有问题，以后要注意这种问题。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/17/150417-Java读存文件方法的那些事儿/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-150330-OpenCV学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/30/150330-OpenCV学习笔记1/" class="article-date">
+  	<time datetime="2015-03-30T10:26:13.000Z" itemprop="datePublished">2015-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/30/150330-OpenCV学习笔记1/">OpenCV学习笔记（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>方向是计算机视觉，OpenCV还是要懂的，把学习OpenCV的笔记记录下来吧，以后可能会用到。</p>
+<h2 id="存取像素值">存取像素值</h2><blockquote>
+<p>椒盐噪点就是图片传输过程中数据丢失的点，一般表现为白色或者黑色。<br>所以通过模拟产生椒盐噪点，说明存取像素值<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/03/30/150330-OpenCV学习笔记1/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-150317-环境配置总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -226,7 +342,8 @@ var _hmt = _hmt || [];
       
         <p>总结一些常见的环境配置，例如java、mysql等等，以备不时之需。</p>
 <blockquote>
-<p>另外，配环境、安装开发工具有两个比较好的习惯：<br>1.路径不能有中文。<br>2.路径不能有空格(平时会默认装到 <code>Program Files</code> 文件夹，所以最好自己新建一个英文无空格的文件夹)<br>
+<p>另外，配环境、安装开发工具有两个比较好的习惯：<br>1.路径不能有中文。<br>2.路径不能有空格(平时会默认装到 <code>Program Files</code> 文件夹，所以最好自己新建一个英文无空格的文件夹)</p>
+</blockquote>
       
     </div>
     

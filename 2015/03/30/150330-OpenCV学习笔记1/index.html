@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OpenCV学习笔记（一） | SoulDong&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="方向是计算机视觉，OpenCV还是要懂的，把学习OpenCV的笔记记录下来吧，以后可能会用到。
+存取像素值
+椒盐噪点就是图片传输过程中数据丢失的点，一般表现为白色或者黑色。所以通过模拟产生椒盐噪点，说明存取像素值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenCV学习笔记（一）">
+<meta property="og:url" content="http://souldong1591.github.io/2015/03/30/150330-OpenCV学习笔记1/index.html">
+<meta property="og:site_name" content="SoulDong's blog">
+<meta property="og:description" content="方向是计算机视觉，OpenCV还是要懂的，把学习OpenCV的笔记记录下来吧，以后可能会用到。
+存取像素值
+椒盐噪点就是图片传输过程中数据丢失的点，一般表现为白色或者黑色。所以通过模拟产生椒盐噪点，说明存取像素值">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenCV学习笔记（一）">
+<meta name="twitter:description" content="方向是计算机视觉，OpenCV还是要懂的，把学习OpenCV的笔记记录下来吧，以后可能会用到。
+存取像素值
+椒盐噪点就是图片传输过程中数据丢失的点，一般表现为白色或者黑色。所以通过模拟产生椒盐噪点，说明存取像素值">
+  
+    <link rel="alternative" href="/atom.xml" title="SoulDong&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c49d2975760f8440a5b6943e2d78bdf0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/main/avatar.png">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Soul东</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">码农，程序猿</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/souldong1591" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/souldong1591" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="http://zhihu.com/people/souldong1591" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/IO/" style="font-size: NaNpx;">IO</a><a href="/tags/Java/" style="font-size: NaNpx;">Java</a><a href="/tags/OpenCV/" style="font-size: NaNpx;">OpenCV</a><a href="/tags/github/" style="font-size: NaNpx;">github</a><a href="/tags/hexo/" style="font-size: NaNpx;">hexo</a><a href="/tags/环境配置/" style="font-size: NaNpx;">环境配置</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Soul东</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/main/avatar.png">
+				<hgroup>
+				  <h1 class="header-author">Soul东</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">码农，程序猿</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/souldong1591" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/souldong1591" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="http://zhihu.com/people/souldong1591" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-150330-OpenCV学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/03/30/150330-OpenCV学习笔记1/" class="article-date">
+  	<time datetime="2015-03-30T10:26:13.000Z" itemprop="datePublished">2015-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OpenCV学习笔记（一）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>方向是计算机视觉，OpenCV还是要懂的，把学习OpenCV的笔记记录下来吧，以后可能会用到。</p>
+<h2 id="存取像素值">存取像素值</h2><blockquote>
+<p>椒盐噪点就是图片传输过程中数据丢失的点，一般表现为白色或者黑色。<br>所以通过模拟产生椒盐噪点，说明存取像素值<br><a id="more"></a></p>
+</blockquote>
+<p>首先，创建一个对图片修改产生椒盐噪点的方法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">salt</span><span class="params">(Mat &amp;image, <span class="keyword">int</span> n)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">	&#123;</span><br><span class="line">	    <span class="comment">//产生随机点</span></span><br><span class="line">		<span class="keyword">int</span> i = rand() % image.rows;</span><br><span class="line">		<span class="keyword">int</span> j = rand() % image.cols;</span><br><span class="line">		<span class="keyword">if</span> (image.channels() == <span class="number">1</span>)</span><br><span class="line">		&#123;   <span class="comment">//为灰度图时</span></span><br><span class="line">			image.at&lt;uchar&gt;(i, j) = <span class="number">255</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(image.channels()</span> </span>== <span class="number">3</span>)</span><br><span class="line">		&#123;   <span class="comment">//为彩色图时</span></span><br><span class="line">			image.at&lt;Vec3b&gt;(i, j)[<span class="number">0</span>] = <span class="number">255</span>;</span><br><span class="line">			image.at&lt;Vec3b&gt;(i, j)[<span class="number">1</span>] = <span class="number">255</span>;</span><br><span class="line">			image.at&lt;Vec3b&gt;(i, j)[<span class="number">2</span>] = <span class="number">255</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面函数中，成员函数<code>channels()</code>是图像的通道数。成员函数<code>at(int y,int x)</code>可以用来存取图像元素。但是<code>at</code>方法本身不会进行任何数据类型转换，所以要确保指定的数据类型和矩阵中的数据类型相符合。<br>所以有上诉判断语句，分为灰度图和彩色图(红蓝绿三通道，Mat会返回一个由三个8位数组成的量，记为Vec3b)。</p>
+</blockquote>
+<h2 id="遍历图像">遍历图像</h2><blockquote>
+<p>图像处理中大多需要遍历图像的所有元素，下面提供两种不同的图像遍历循环实现方法。</p>
+</blockquote>
+<h3 id="指针遍历图像">指针遍历图像</h3><blockquote>
+<p>在一个彩色图像中，图像数据缓冲区中额度前三个字节对应图像左上角的三个通道值，接下来的三个字节对应第一行的第二个像素，以此类推(opencv默认使用BGR的通道顺序，即第一个通道通常是蓝色)。<br>但是出于效率考虑，一般每行会填补一些额外像素。以达到行的长度是4或8的倍数(填补的值不会被显示)。<br>下面以缩减颜色为例子，说明下指针遍历图像：</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">colorReduce</span><span class="params">(Mat &amp;image, <span class="keyword">int</span> div = 64)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> nl = image.rows;  <span class="comment">//行数</span></span><br><span class="line">	<span class="comment">//每行的像素数</span></span><br><span class="line">	<span class="keyword">int</span> nc = image.cols * image.channels();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nl; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		uchar* data = image.ptr&lt;uchar&gt;(j);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nc; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			data[i] = data[i] / div*div + div / <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Mat</code>提供了<code>ptr</code>函数可以得到图像任意行的首地址。<br>所以，我们可以等效地使用指针运算从一列移动到下一列：<br><code>*data++ = *data/div*div + div/2;</code><br>上面的颜色缩减是通过利用整数除法对结果向下取整得到的，我们也可以通过模运算来计算最接近被除数的除数(缩减因子，div)的整数倍数：<br><code>data[i] = data[i] - data[i]%div + div/2;</code><br>但是，这种方式的速度会比较慢，因为它需要存取每个像素两次。<br>比较高效的方法是使用位运算。如果我们限制缩减因子为2的幂次，即<code>div = pow(2, n)</code>，那么只取像素值的前n位即可得到不大于该值的关于缩减因子的最大证书倍数。运算掩膜可以通过简单的移位操作得到：<br><code>//用来对像素取整的掩膜
+uchar mask = 0xFF&lt;&lt;n; //e.g.for div = 16, mask = 0xF0</code><br>颜色缩减可以通过如下方式计算：<br><code>data[i] = (data[i]&amp;mask) + div/2</code><br>另外，我们可以通过图像的连续性来提高效率：</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">colorReduce</span><span class="params">(Mat &amp;image, <span class="keyword">int</span> div = 64)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> nl = image.rows;</span><br><span class="line">	<span class="keyword">int</span>  nc = image.cols * image.channels();</span><br><span class="line">	<span class="keyword">if</span> (image.isContinuous())</span><br><span class="line">	&#123; <span class="comment">//没有额外的填补像素，即为连续图像</span></span><br><span class="line">		nc = nc * nl;</span><br><span class="line">		nl = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//连续图像可缩减为一层循环</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nl; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		uchar* data = image.ptr&lt;uchar&gt;(j);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nc; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			data[i] = data[i] / div*div + div / <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们通过<code>isContinuous</code>判断后，来消除外层循环。当然，我们也可以使用<code>reshape</code>方法重写这段代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(image.isContinuous())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//no padded pixels</span></span><br><span class="line">    image.reshape(<span class="number">1</span>,    <span class="comment">//通道数</span></span><br><span class="line">        image.cols*image.rows;  <span class="comment">//行数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> nl = image.rows;    <span class="comment">//列数</span></span><br><span class="line"><span class="keyword">int</span> nc = image.cols*image.channels();</span><br></pre></td></tr></table></figure></p>
+<h3 id="迭代器遍历图像">迭代器遍历图像</h3><blockquote>
+<p>在面向对象的编程中，遍历数据集合通常是通过迭代器来完成的。同样的，OpenCV为cv::Mat提供了与STL迭代器兼容的迭代器。</p>
+</blockquote>
+<p>一个图像迭代器可以用如下方法来声明：<br>    <code>cv::Mat Iterator_&lt;cv::Vec3b&gt; it;</code><br>另一种方式是：<br>    <code>cv::Mat_&lt;cv::Vec3b&gt;::iterator it;</code></p>
+<p>这样，颜色缩减函数可以重写为：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">colorReduce</span><span class="params">(Mat &amp;image, <span class="keyword">int</span> div = 64)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="comment">//得到初始位置的迭代器</span></span><br><span class="line">	cv::Mat_&lt;cv::Vec3b&gt;::iterator it = image.begin&lt;cv::Vec3b&gt;();</span><br><span class="line">	<span class="comment">//得到终止位置的迭代器</span></span><br><span class="line">	cv::Mat_&lt;cv::Vec3b&gt;::iterator itend = image.end&lt;cv::Vec3b&gt;();</span><br><span class="line">	<span class="comment">//遍历所有像素</span></span><br><span class="line">	<span class="keyword">for</span> (; it != itend; ++it) &#123;</span><br><span class="line">	    <span class="comment">//处理每个像素</span></span><br><span class="line">		(*it)[<span class="number">0</span>] = (*it)[<span class="number">0</span>] / div*div + div / <span class="number">2</span>;</span><br><span class="line">		(*it)[<span class="number">1</span>] = (*it)[<span class="number">1</span>] / div*div + div / <span class="number">2</span>;</span><br><span class="line">		(*it)[<span class="number">2</span>] = (*it)[<span class="number">2</span>] / div*div + div / <span class="number">2</span>;</span><br><span class="line">		<span class="comment">//像素处理完成</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="编写高效的图像遍历循环">编写高效的图像遍历循环</h3><p>首先，介绍一个使用的函数，OpenCV有一个非常实用的函数<code>cv::getTickCount()</code>，可以用来测量一段代码的运行时间，这函数返回从上次开机算起的时钟周期数。<code>cv::getTickFrequency()</code>是返回每秒的时钟周期数。所以结合这两个函数，我们可以得到一段代码的运行时间。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> duration;</span><br><span class="line">duration = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(cv::getTickCount());</span><br><span class="line">colorReduce(image); <span class="comment">//要测试的代码段</span></span><br><span class="line">duration = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(cv::getTickCount()) - duration;</span><br><span class="line">duration /= cv::getTickFrequency();</span><br></pre></td></tr></table></figure></p>
+<p>这样，经过测试后，发现位运算的方法是最快的。其写法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">colorReduce</span><span class="params">(Mat &amp;image, <span class="keyword">int</span> div = 64)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> nl = image.rows; <span class="comment">//行数</span></span><br><span class="line">	<span class="keyword">int</span> nc = image.cols; <span class="comment">//列数</span></span><br><span class="line">	<span class="keyword">if</span> (image.isContinuous())</span><br><span class="line">	&#123; <span class="comment">//没有额外的填补像素，即为连续图像</span></span><br><span class="line">		nc = nc * nl;</span><br><span class="line">		nl = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(<span class="built_in">log</span>(<span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(div))/<span class="built_in">log</span>(<span class="number">2.0</span>);</span><br><span class="line">	<span class="comment">//用来对像素值取整的二进制掩膜</span></span><br><span class="line">	uchar mask = <span class="number">0xFF</span>&lt;&lt;n;   <span class="comment">//e.g. for div=16,mask=0xF0</span></span><br><span class="line">	<span class="comment">//for all pixels</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nl; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//第j列的地址</span></span><br><span class="line">        uchar* data = image.ptr&lt;uchar&gt;(j);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nc; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//处理每个像素</span></span><br><span class="line">            *data++ = *data&amp;mask + div/<span class="number">2</span>;</span><br><span class="line">            *data++ = *data&amp;mask + div/<span class="number">2</span>;</span><br><span class="line">            *data++ = *data&amp;mask + div/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="遍历图像与领域操作">遍历图像与领域操作</h3><p>以对图像锐化为例：<br>锐化算子的计算方式如下：<br><code>sharpened_pixel = 5*current-left-right-up-down;</code><br>其中，left代表在当前像素紧挨着它的像素<br>实现方法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sharpen</span><span class="params">(<span class="keyword">const</span> cv::Mat &amp;image, cv::Mat &amp;result)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">//如有必要则分配图像</span></span><br><span class="line">    result.create(image.size(), image.type());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; image.rows - <span class="number">1</span>; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">const</span> uchar* previous = image.ptr&lt;<span class="keyword">const</span> uchar&gt;(j-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">const</span> uchar* current = image.ptr&lt;<span class="keyword">const</span> uchar&gt;(j);</span><br><span class="line">        <span class="keyword">const</span> uchar* next = image.ptr&lt;<span class="keyword">const</span> uchar&gt;(j+<span class="number">1</span>);</span><br><span class="line">        uchar* output = result.ptr&lt;uchar&gt;(j);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt; image.cols - <span class="number">1</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            *output++ = cv::saturate_cast&lt;uchar&gt;(<span class="number">5</span>*current[i]-current[i-<span class="number">1</span>]-current[i+<span class="number">1</span>]-previous[i]-next[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将未处理的像素设置为零</span></span><br><span class="line">    result.row(<span class="number">0</span>).setTo(cv::Scalar(<span class="number">0</span>));</span><br><span class="line">    result.row(result.rows-<span class="number">1</span>).setTo(cv::Scalar(<span class="number">0</span>));</span><br><span class="line">    result.row(<span class="number">0</span>).setTo(cv::Scalar(<span class="number">0</span>));</span><br><span class="line">    result.row(<span class="number">0</span>).setTo(cv::Scalar(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述滤波方法，其实OpenCV中已内置，即<code>cv::filter2D</code></p>
+<h3 id="简单的图像运算">简单的图像运算</h3><p>OpenCV中提供了很多对图像的运算函数。<br>例如图像相加，函数为<code>cv::addWeighted(image1, 0.7, image2, 0.9, 0., result)</code><br>而且，OpenCV对大多数运算函数进行了重载，所以上面的函数可以直接写成：<code>result = 0.7*image1 + 0.9*image2</code></p>
+<blockquote>
+<p>注意，<code>cv::add</code>要求输入的两幅图像具有相同的尺寸。</p>
+</blockquote>
+<p>当想两个不同尺寸的图像相加时，要定义感兴趣区域，使感兴趣区域与要插入图片尺寸相同即可。<br>实现方法：<br>首先定义ROI，注意ROI和它的父图像指向同一块内存缓冲区。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义图像ROI</span></span><br><span class="line">cv::Mat imageROI;</span><br><span class="line">imageROI = image(cv::Rect(<span class="number">385</span>, <span class="number">270</span>, logo.cols, logo.rows));</span><br><span class="line"><span class="comment">//插入logo</span></span><br><span class="line">cv::addWeighted(imageROI, <span class="number">1.0</span>, logo, <span class="number">0.3</span>, <span class="number">0.</span>, imageROI);</span><br></pre></td></tr></table></figure></p>
+<p>当然，也可以通过使用图像掩膜来使图像效果更好看<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义ROI</span></span><br><span class="line">imageROI = image(cv::Rect(<span class="number">385</span>, <span class="number">270</span>, logo.cols, logo.rows));</span><br><span class="line"><span class="comment">//加载掩膜(必须是灰度图)</span></span><br><span class="line">cv::Mat mask = cv::imread(<span class="string">"logo.bmp"</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//通过掩膜拷贝ROI</span></span><br><span class="line">logo.copyTo(imageROI, mask);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上述代码中，<code>cv::Rect</code>表示一个矩形区域，指定矩形的左上角坐标和矩形的长宽。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/04/17/150417-Java读存文件方法的那些事儿/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Java读存文件方法的那些事儿
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/17/150317-环境配置总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一些常用的环境配置总结(Java、MySQL、Tomcat等等)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="150330-OpenCV学习笔记1" data-title="OpenCV学习笔记（一）" data-url="http://souldong1591.github.io/2015/03/30/150330-OpenCV学习笔记1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"souldong1591"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Soul东
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
